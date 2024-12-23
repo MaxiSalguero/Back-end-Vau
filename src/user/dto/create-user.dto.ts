@@ -11,7 +11,8 @@ import { ApiProperty, PickType } from '@nestjs/swagger';
 export class CreateUserDto {
   @ApiProperty({
     example: 'UserExample',
-    description: 'Esta es la propiedad username',
+    description:
+      'Nombre de usuario. Debe tener entre 3 y 20 caracteres alfanuméricos.',
   })
   @IsNotEmpty()
   @IsString()
@@ -20,7 +21,8 @@ export class CreateUserDto {
 
   @ApiProperty({
     example: 'user@example.com',
-    description: 'Esta es la propiedad email',
+    description:
+      'Correo electrónico del usuario. Debe ser válido y único en el sistema.',
   })
   @IsNotEmpty()
   @IsEmail()
@@ -29,7 +31,8 @@ export class CreateUserDto {
 
   @ApiProperty({
     example: 'Example123!',
-    description: 'Esta es la propiedad password',
+    description:
+      'Contraseña del usuario. Debe tener entre 8 y 100 caracteres e incluir al menos una letra minúscula, una letra mayúscula, un número y un carácter especial',
   })
   @IsNotEmpty()
   @Length(8, 100)
