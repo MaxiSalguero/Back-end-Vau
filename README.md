@@ -6,9 +6,9 @@
 
 ## Descripción
 
-Este proyecto es una API desarrollada como parte de una prueba técnica. La API permite gestionar usuarios, incluyendo funcionalidades como autenticación, creación y lectura de recursos. 
+Este proyecto es una API desarrollada como parte de una prueba técnica, que permite gestionar usuarios, incluyendo funcionalidades como autenticación, creación y lectura de recursos. Está diseñada utilizando el framework **NestJS**, estructurada bajo una arquitectura modular que favorece la separación de responsabilidades, implementando una arquitectura en capas para organizar controladores, servicios y entidades de manera clara y eficiente.
 
-La API está diseñada utilizando el framework **NestJS**, con un enfoque modular y siguiendo las mejores prácticas de desarrollo backend.
+Además, se aplican principios de diseño SOLID para asegurar un código mantenible, flexible y extensible, lo que permite facilitar la escalabilidad y la integración de nuevas funcionalidades en el futuro sin comprometer la calidad del código.
 
 ---
 
