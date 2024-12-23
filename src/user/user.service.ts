@@ -13,9 +13,7 @@ export class UserService {
     const usersList = await this.userRepository.find();
 
     if (usersList.length < 1)
-      throw new NotFoundException(
-        'De momento no se encontraron usuarios registrados',
-      );
+      throw new NotFoundException('No se encontraron usuarios registrados');
 
     return usersList.map(({ password, ...userNoPassword }) => userNoPassword);
   }

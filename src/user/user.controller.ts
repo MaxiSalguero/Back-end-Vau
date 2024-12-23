@@ -1,15 +1,20 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
-import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { AuthGuard } from 'src/guards/auth.guard';
 
-@ApiBearerAuth() 
+@ApiBearerAuth()
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
   @UseGuards(AuthGuard)
+  @ApiOperation({
+    summary: 'Obtiene lista de usuarios registrados',
+    description:
+      'Permite obtener datos de usuarios registrados, para su ejecucion requiere token de autenticacion',
+  })
   @ApiResponse({
     status: 200,
     description: 'Lista de usuarios obtenida exitosamente',
