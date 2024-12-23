@@ -11,7 +11,7 @@ export class AuthController {
     return this.authService.signUp(user);
   }
 
-  @Post('/log-in')
+  @Post('log-in')
   async logIn(@Body() credentials: LoginUserDto) {
     const { email, password } = credentials;
     return this.authService.logIn(email, password);

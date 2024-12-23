@@ -1,39 +1,71 @@
+<h1 align="center"> Prueba Técnica - API REST </h1> <br>
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descripción
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Este proyecto es una API desarrollada como parte de una prueba técnica. La API permite gestionar usuarios, incluyendo funcionalidades como autenticación, creación y lectura de recursos. 
 
-## Description
+La API está diseñada utilizando el framework **NestJS**, con un enfoque modular y siguiendo las mejores prácticas de desarrollo backend.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+---
 
-## Project setup
+## Tecnologías
 
-```bash
-$ npm install
+- **NestJS**: Framework principal para la construcción de la API.
+- **TypeScript**: Lenguaje utilizado para tipado estático y mayor robustez en el código.
+- **PostgreSQL**: Base de datos relacional para el almacenamiento de los datos.
+- **TypeORM**: ORM para la interacción con la base de datos.
+- **JWT (JSON Web Token)**: Para la autenticación y autorización.
+- **Swagger**: Documentación interactiva de la API.
+
+---
+
+## Estructura del Proyecto
+
+La API está organizada en módulos para mantener una arquitectura clara y escalable:
+
+```
+src/
+├── auth/               # Módulo de autenticación
+├── config/             # Configuración global de la aplicación y la base de datos
+├── guards/             # Guards personalizados para la protección de rutas
+├── user/               # Módulo de gestion de usuarios
+└── main.ts             # Punto de entrada de la aplicación
 ```
 
-## Compile and run the project
+---
 
+## Instalación
+
+Sigue estos pasos para clonar y ejecutar el proyecto localmente:
+
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/MaxiSalguero/Back-end-Vau.git
+cd Back-end-Vau
+```
+
+### 2. Instalar dependencias
+```bash
+npm install
+```
+
+### 3. Configurar las variables de entorno
+Crea un archivo `.env` en la raíz del proyecto y añade las siguientes variables:
+```env
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_USER=tu_usuario
+DATABASE_PASSWORD=tu_contraseña
+DATABASE_NAME=nombre_de_tu_base_de_datos
+JWT_SECRET=tu_secreto
+PORT=3000
+```
+
+### 4. Iniciar la aplicación
 ```bash
 # development
 $ npm run start
@@ -45,55 +77,40 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Run tests
+La API estará disponible en `http://localhost:3000`.
 
-```bash
-# unit tests
-$ npm run test
+---
 
-# e2e tests
-$ npm run test:e2e
+## Uso
 
-# test coverage
-$ npm run test:cov
-```
+### Documentación de la API
+La API cuenta con documentación interactiva generada automáticamente con Swagger.  
+Puedes acceder a ella en:  
 
-## Deployment
+`http://localhost:3000/doc`
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+### Endpoints principales
+#### Usuarios
+- `POST /auth/sign-up`: Registro de un nuevo usuario.
+- `POST /auth/log-in`: Inicio de sesión y generación de un token JWT.
+- `GET /user`: Listado de usuarios (requiere token).
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+---
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+## Características
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+- **Autenticación y autorización**:
+  - Autenticación con JWT.
+- **Validación de datos**:
+  - Validación de entradas con **class-validator**.
+- **Manejo de errores**:
+  - Respuestas consistentes en caso de errores.
+  - Captura de excepciones personalizadas.
+- **Documentación interactiva**:
+  - Generada con Swagger para facilitar pruebas y desarrollo.
 
-## Resources
+---
 
-Check out a few resources that may come in handy when working with NestJS:
+## Créditos
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Proyecto desarrollado por Maximiliano Salguero.
