@@ -24,7 +24,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/Back-end-Vau:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/back-end-vau:latest
       
       - name: Trigger Deploy on Render
         run: |
